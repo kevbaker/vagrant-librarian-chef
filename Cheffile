@@ -1,0 +1,32 @@
+#!/usr/bin/env ruby
+#^syntax detection
+
+
+# Vagrant Chef Howto - http://bit.ly/RPC4uI
+#
+site 'http://community.opscode.com/api/v1'
+
+# cookbook 'chef-client'
+
+# cookbook 'apache2', '>= 1.0.0'
+
+# cookbook 'rvm',
+#   :git => 'https://github.com/fnichol/chef-rvm'
+
+# cookbook 'postgresql',
+#   :git => 'https://github.com/findsyou/cookbooks',
+#   :ref => 'postgresql-improvements'
+
+# Librarian setup for Rails rvm install
+cookbook 'apt', 
+  git: 'https://github.com/fnichol/chef-apt'
+cookbook 'git', 
+  git: 'https://github.com/fnichol/chef-git.git'
+cookbook 'build-essential'
+cookbook 'rvm', 
+  git: 'git://github.com/fnichol/chef-rvm.git', ref: 'v0.8.6'
+cookbook 'mysql'
+  git: 'git://github.com/opscode-cookbooks/mysql.git'
+
+
+
