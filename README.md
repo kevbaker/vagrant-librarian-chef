@@ -12,7 +12,7 @@ This is a basic setup for Librarian-Chef with Vagrant. It can be used as an exam
 
 ## References
 
-* (Chef resources)[http://bit.ly/PGD1aj]
-* (Vagrant Chef Howto)[]http://bit.ly/RPC4uI] - This was used as a reference to build out this project.
+* [Chef resources](http://bit.ly/PGD1aj) - Some resources on how to use Chef.
+* [Vagrant Chef Howto](http://bit.ly/RPC4uI) - This was used as a reference to build out this project.
 
 
