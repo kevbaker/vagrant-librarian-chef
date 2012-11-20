@@ -10,26 +10,21 @@ Vagrant::Config.run do |config|
 
   config.vm.box_url = "http://files.vagrantup.com/precise32.box"
 
-  #config.vm.box = "preceise32"
   config.vm.box = "precise32"
 
 
   # Chef provisioner:
   # Enable and configure the chef solo provisioner
   config.vm.provision :chef_solo do |chef|
-    # We're going to download our cookbooks from the web
-    #chef.recipe_url = "http://files.vagrantup.com/getting_started/cookbooks.tar.gz"
-
-    # Tell chef what recipe to run. In this case, the `vagrant_main` recipe
-    # does all the magic.
-    #chef.add_recipe("vagrant_main")
     # Vagrant Chef Howto - http://bit.ly/RPC4uI
     chef.cookbooks_path = ["cookbooks"]
+    # TODO: add a cookbook or recipe for apt-get update
     chef.add_recipe "apt"
     chef.add_recipe "build-essential"
     chef.add_recipe "rvm::vagrant"
     chef.add_recipe "rvm::system"
     chef.add_recipe "git"
+    chef.add_recipe "mysql"
   end
 
 
@@ -40,7 +35,6 @@ Vagrant::Config.run do |config|
 
   # do NOT download the iso file from a webserver
   config.vbguest.no_remote = false
-
 
   # Forward ports:
   Vagrant::Config.run do |config|

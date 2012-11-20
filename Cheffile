@@ -18,15 +18,17 @@ site 'http://community.opscode.com/api/v1'
 #   :ref => 'postgresql-improvements'
 
 # Librarian setup for Rails rvm install
+
+# TODO: add a cookbook or recipe for apt-get update
+
 cookbook 'apt', 
-  git: 'https://github.com/fnichol/chef-apt'
+  git: 'git@github.com:kevbaker/chef-apt.git' #, ref: 'v1.0.1'
+cookbook 'build-essential'
 cookbook 'git', 
   git: 'https://github.com/fnichol/chef-git.git'
-cookbook 'build-essential'
 cookbook 'rvm', 
   git: 'git://github.com/fnichol/chef-rvm.git', ref: 'v0.8.6'
-cookbook 'mysql'
-  git: 'git://github.com/opscode-cookbooks/mysql.git'
-
+cookbook 'mysql',
+  git: 'https://github.com/opscode-cookbooks/mysql.git'
 
 
