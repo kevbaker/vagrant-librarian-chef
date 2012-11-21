@@ -8,9 +8,13 @@ Vagrant::Config.run do |config|
 
   # Every Vagrant virtual environment requires a box to build off of.
 
-  config.vm.box_url = "http://files.vagrantup.com/precise32.box"
 
-  config.vm.box = "precise32"
+  config.vm.box_url = "http://files.vagrantup.com/lucid32.box"
+  config.vm.box = "lucid32"
+
+
+  #config.vm.box_url = "http://files.vagrantup.com/precise32.box"
+  #config.vm.box = "precise32"
 
 
   # Chef provisioner:
@@ -18,14 +22,23 @@ Vagrant::Config.run do |config|
   config.vm.provision :chef_solo do |chef|
     # Vagrant Chef Howto - http://bit.ly/RPC4uI
     chef.cookbooks_path = ["cookbooks"]
-    # TODO: add a cookbook or recipe for apt-get update
     chef.add_recipe "apt"
     chef.add_recipe "build-essential"
     chef.add_recipe "rvm::vagrant"
     chef.add_recipe "rvm::system"
     chef.add_recipe "git"
-    chef.add_recipe "mysql"
+    chef.json = {
+      :mysql => {
+        :server_root_password => '',
+        :server_debian_password => '',
+        :server_repl_password => ''
+
+      } 
+    }
+    chef.add_recipe "mysql::server"
+    chef.add_recipe "mysql::client"
   end
+
 
 
   # Guest Additions:

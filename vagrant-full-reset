@@ -1,0 +1,28 @@
+#!/usr/bin/env sh
+
+
+# Reset vagrant installation
+#
+
+
+echo "Reset Vagrant Environment"
+
+echo "--------------------- vagrant shutdown"
+vagrant destroy
+#vagrant halt 
+
+echo "--------------------- clearing tmp and cookbooks directories"
+rm -Rf tmp
+rm -Rf cookbooks
+
+echo "--------------------- bundle install gems" 
+bundle install
+
+echo "--------------------- installing librarian-chef cookbooks" 
+librarian-chef install
+
+echo "--------------------- starting vagrant virtual machine"
+vagrant up
+
+
+
